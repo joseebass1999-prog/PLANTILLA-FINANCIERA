@@ -249,7 +249,7 @@ export default function Videos() {
                   <iframe 
                     src={activeVideo === 'works' 
                       ? "https://drive.google.com/file/d/1nMX0M863XnJ2lqi92PLZqahrpvkI3LQ-/preview" 
-                      : "https://drive.google.com/file/d/1-YCjKgzXWE0_uYaJOSL404GpjPkaMZ9G/preview"} 
+                      : "https://www.youtube.com/embed/Q6M7iXVBcyU?autoplay=1"} 
                     title={activeVideo === 'works' ? "Video de Demostración" : "Video de Caso Real"} 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
