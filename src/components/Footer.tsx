@@ -26,7 +26,11 @@ export default function Footer({ onBuyClick }: FooterProps) {
             No dejes para el próximo mes el orden financiero que puedes conseguir en 3 minutos. Únete a cientos de personas que ya recuperaron su paz.
           </p>
           
-          <div className="pt-4">
+          <div className="pt-4 flex flex-col items-center gap-3">
+            <div className="flex items-center gap-2">
+              <span className="text-sm font-sans text-slate-400 line-through decoration-rose-500 font-semibold">$45 USD</span>
+              <span className="text-xs font-sans font-black bg-rose-500/20 text-rose-400 border border-rose-500/30 px-2.5 py-0.5 rounded-full uppercase tracking-wider">¡AHORRA 80% HOY!</span>
+            </div>
             <motion.button
               whileHover={{ scale: 1.03 }}
               whileTap={{ scale: 0.98 }}

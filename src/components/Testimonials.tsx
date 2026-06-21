@@ -15,7 +15,7 @@ export default function Testimonials() {
         <div className="text-center max-w-2xl mx-auto mb-16">
           <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 text-emerald-800 font-sans text-xs font-black uppercase tracking-wider rounded-full border border-emerald-500/15 mb-6 shadow-sm shadow-emerald-500/5">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span>Opiniones Reales</span>
+            <span>Testimonios</span>
           </span>
           <h2 className="font-display font-bold text-3xl md:text-4xl text-slate-900 mt-4 tracking-tight">
             Lo que dicen quienes ya ordenaron sus finanzas

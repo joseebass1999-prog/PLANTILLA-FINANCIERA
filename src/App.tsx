@@ -12,7 +12,6 @@ import SolutionSimulator from './components/SolutionSimulator';
 import Videos from './components/Videos';
 import Benefits from './components/Benefits';
 import Simplicity from './components/Simplicity';
-import Bonuses from './components/Bonuses';
 import Testimonials from './components/Testimonials';
 import OfferCheckout from './components/OfferCheckout';
 import Warranty from './components/Warranty';
@@ -50,9 +49,6 @@ export default function App() {
 
       {/* 7. Simplicidad */}
       <Simplicity />
-
-      {/* 8. Bonos */}
-      <Bonuses />
 
       {/* 9. Testimonios */}
       <Testimonials />

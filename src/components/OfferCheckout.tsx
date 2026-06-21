@@ -21,7 +21,7 @@ export default function OfferCheckout({ isOpen, onOpenChange }: OfferCheckoutPro
   const [couponApplied, setCouponApplied] = useState(false);
 
   // Price calculation
-  const basePrice = 29;
+  const basePrice = 45;
   const currentPrice = couponApplied ? 7.2 : 9;
 
   const handleApplyCoupon = () => {
@@ -86,13 +86,21 @@ export default function OfferCheckout({ isOpen, onOpenChange }: OfferCheckoutPro
               SISTEMA COMPLETO DINERO EN ORDEN
             </p>
             
-            {/* Price tag */}
-            <div className="flex items-center justify-center gap-4 my-6">
-              <span className="font-sans text-slate-500 text-xl md:text-2xl line-through decoration-rose-500 decoration-2 font-medium">
-                $29 USD
+            {/* Price tag with 80% Discount Psychology */}
+            <div className="flex flex-col items-center gap-1.5 my-6">
+              <span className="text-xs font-sans font-black bg-rose-500 text-white rounded-full px-3 py-1 uppercase tracking-wider animate-bounce">
+                80% de Descuento Especial
               </span>
-              <span className="font-display text-5xl md:text-6xl font-black text-white tracking-tight flex items-baseline">
-                ${currentPrice} <span className="text-xs md:text-sm text-emerald-400 font-mono font-semibold ml-2">USD</span>
+              <div className="flex items-center justify-center gap-4">
+                <span className="font-sans text-slate-500 text-xl md:text-2xl line-through decoration-rose-500 decoration-2 font-medium">
+                  $45 USD
+                </span>
+                <span className="font-display text-5xl md:text-6xl font-black text-white tracking-tight flex items-baseline">
+                  ${currentPrice} <span className="text-xs md:text-sm text-emerald-400 font-mono font-semibold ml-2">USD</span>
+                </span>
+              </div>
+              <span className="text-xs font-sans text-emerald-400 font-bold mt-1">
+                Ahorras exactamente $36 USD hoy mismo
               </span>
             </div>
 

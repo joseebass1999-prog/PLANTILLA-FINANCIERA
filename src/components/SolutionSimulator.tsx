@@ -232,7 +232,11 @@ export default function SolutionSimulator({ onCtaClick }: SolutionSimulatorProps
               </div>
             </div>
 
-            <div className="w-full lg:w-auto shrink-0 flex flex-col items-center gap-2.5">
+            <div className="w-full lg:w-auto shrink-0 flex flex-col items-center gap-3">
+              <div className="flex items-center gap-2">
+                <span className="text-xs font-sans text-slate-400 line-through decoration-rose-500 font-semibold">$45 USD</span>
+                <span className="text-xs font-sans font-black bg-rose-500/10 text-rose-400 border border-rose-500/20 px-2 py-0.5 rounded-full uppercase tracking-wider">¡AHORRA 80%!</span>
+              </div>
               <button
                 onClick={onCtaClick}
                 id="solution-showcase-cta"
@@ -241,7 +245,7 @@ export default function SolutionSimulator({ onCtaClick }: SolutionSimulatorProps
                 Quiero mi plantilla por $9 USD
                 <ArrowRight className="w-4.5 h-4.5" />
               </button>
-              <span className="text-[10px] font-bold text-slate-500 tracking-wider uppercase font-mono">Pago único • Garantía de Devolución</span>
+              <span className="text-[10px] font-bold text-slate-400 tracking-wider uppercase font-mono">Pago único • Ajustado con 80% de Descuento</span>
             </div>
           </div>
         </div>
