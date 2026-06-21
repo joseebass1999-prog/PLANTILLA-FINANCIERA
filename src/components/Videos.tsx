@@ -94,11 +94,13 @@ export default function Videos() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-[620px] mx-auto mb-12">
           
           {/* Video 1: "Cómo funciona" */}
-          <div className="flex flex-col items-center">
-            <h3 className="font-sans font-bold text-lg text-slate-800 mb-3.5 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Vídeo 1: “Cómo funciona”
-            </h3>
+          <div className="flex flex-col items-center text-center">
+            <div className="text-center mb-3.5">
+              <p className="font-sans font-extrabold text-sm text-emerald-600 uppercase tracking-tight max-w-[260px] mx-auto">
+                TODAS LAS FUNCIONES de la plantilla de Finanzas
+              </p>
+              <p className="text-base mt-1 animate-bounce">👇👇👇</p>
+            </div>
             
             {/* Play Button Outer Frame */}
             <div 
@@ -155,11 +157,13 @@ export default function Videos() {
           </div>
 
           {/* Video 2: “Ejemplo real” */}
-          <div className="flex flex-col items-center">
-            <h3 className="font-sans font-bold text-lg text-slate-800 mb-3.5 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              Vídeo 2: “Ejemplo real”
-            </h3>
+          <div className="flex flex-col items-center text-center">
+            <div className="text-center mb-3.5">
+              <p className="font-sans font-extrabold text-sm text-emerald-600 uppercase tracking-tight max-w-[260px] mx-auto">
+                Así funciona la plantilla
+              </p>
+              <p className="text-base mt-1 animate-bounce">👇</p>
+            </div>
             
             {/* Play Button Outer Frame */}
             <div 
