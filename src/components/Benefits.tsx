@@ -17,46 +17,11 @@ const iconMap: Record<string, ComponentType<{ className?: string }>> = {
 
 interface BenefitsProps {
   onCtaClick: () => void;
+  timeLeft: number;
+  spotsLeft: number;
 }
 
-export default function Benefits({ onCtaClick }: BenefitsProps) {
-  // Countdown timer logic (15 minutes constant countdown, persisted)
-  const [timeLeft, setTimeLeft] = useState(900); // 15 mins (900 seconds)
-
-  useEffect(() => {
-    const storeKey = 'dinero_countdown_time';
-    const savedTime = localStorage.getItem(storeKey);
-    const now = Math.floor(Date.now() / 1000);
-    
-    let targetTime: number;
-    if (savedTime) {
-      targetTime = parseInt(savedTime, 10);
-      // If the target has already passed, reset it to 15 minutes from now
-      if (targetTime < now) {
-        targetTime = now + 900;
-        localStorage.setItem(storeKey, targetTime.toString());
-      }
-    } else {
-      targetTime = now + 900;
-      localStorage.setItem(storeKey, targetTime.toString());
-    }
-
-    const interval = setInterval(() => {
-      const currentNow = Math.floor(Date.now() / 1000);
-      const diff = targetTime - currentNow;
-      if (diff <= 0) {
-        // Reset timer loop automatically to keep high urgency alive
-        const newTarget = currentNow + 900;
-        localStorage.setItem(storeKey, newTarget.toString());
-        setTimeLeft(900);
-      } else {
-        setTimeLeft(diff);
-      }
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
+export default function Benefits({ onCtaClick, timeLeft, spotsLeft }: BenefitsProps) {
   const mins = Math.floor(timeLeft / 60).toString().padStart(2, '0');
   const secs = (timeLeft % 60).toString().padStart(2, '0');
 
@@ -283,6 +248,9 @@ export default function Benefits({ onCtaClick }: BenefitsProps) {
                   </span>
                   <span className="text-[9px] font-sans font-extrabold tracking-wider text-slate-500 uppercase mt-1.5">segundos</span>
                 </div>
+              </div>
+              <div className="text-xs font-semibold text-rose-200 mt-1 bg-rose-950/40 px-3.5 py-1.5 rounded-full border border-rose-900/40">
+                🚨 <strong className="text-amber-400 font-extrabold">¡QUEDAN SOLO {spotsLeft} LICENCIAS!</strong> El sistema se cerrará hoy.
               </div>
             </div>
 

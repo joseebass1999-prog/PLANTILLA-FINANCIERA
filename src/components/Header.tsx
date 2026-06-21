@@ -9,13 +9,15 @@ import UrgencyBanner from './UrgencyBanner';
 
 interface HeaderProps {
   onBuyClick: () => void;
+  timeLeft: number;
+  spotsLeft: number;
 }
 
-export default function Header({ onBuyClick }: HeaderProps) {
+export default function Header({ onBuyClick, timeLeft, spotsLeft }: HeaderProps) {
   return (
     <div className="fixed top-0 left-0 right-0 z-50 shadow-sm">
       {/* 1. Urgency / Scarcity FOMO banner at the absolute top */}
-      <UrgencyBanner />
+      <UrgencyBanner timeLeft={timeLeft} spotsLeft={spotsLeft} />
 
       {/* 2. Main Navigation Header */}
       <header className="bg-white/90 backdrop-blur-md border-b border-emerald-100/60 py-3 md:py-3.5 px-4 md:px-8 text-slate-800 transition-all duration-300">

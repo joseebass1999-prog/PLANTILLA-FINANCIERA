@@ -10,27 +10,17 @@ import { CheckCircle2, ShoppingBag, Mail, CreditCard, Lock, Sparkles, CheckSquar
 interface OfferCheckoutProps {
   isOpen: boolean;
   onOpenChange: (open: boolean) => void;
+  timeLeft: number;
+  spotsLeft: number;
 }
 
-export default function OfferCheckout({ isOpen, onOpenChange }: OfferCheckoutProps) {
+export default function OfferCheckout({ isOpen, onOpenChange, timeLeft, spotsLeft }: OfferCheckoutProps) {
   const [email, setEmail] = useState('');
   const [fullName, setFullName] = useState('');
   const [step, setStep] = useState<'checkout' | 'processing' | 'done'>('checkout');
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal' | 'mercadopago'>('card');
   const [coupon, setCoupon] = useState('');
   const [couponApplied, setCouponApplied] = useState(false);
-  const [reserveTime, setReserveTime] = useState(599); // 9 minutes 59 seconds
-
-  React.useEffect(() => {
-    if (!isOpen) {
-      setReserveTime(599); // reset on close
-      return;
-    }
-    const timer = setInterval(() => {
-      setReserveTime((prev) => (prev > 0 ? prev - 1 : 599));
-    }, 1000);
-    return () => clearInterval(timer);
-  }, [isOpen]);
 
   const formatReserveTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
@@ -130,7 +120,7 @@ export default function OfferCheckout({ isOpen, onOpenChange }: OfferCheckoutPro
             {/* Escasez y Urgencia: FOMO Scarcity Warning */}
             <div className="text-xs text-rose-350 font-sans font-bold mb-8 bg-rose-950/40 border border-rose-900/35 py-2 px-3 mx-auto max-w-sm rounded-xl flex items-center justify-between gap-1.5 animate-pulse">
               <span className="flex items-center gap-1.5 text-left text-[11px] leading-tight text-rose-200">
-                ⚠️ <strong className="text-rose-400 font-black">Cupos limitados:</strong> Quedan solo 7 licencias con descuento para hoy.
+                ⚠️ <strong className="text-rose-400 font-black">Cupos limitados:</strong> Quedan solo {spotsLeft} licencias con descuento para hoy.
               </span>
               <span className="shrink-0 text-[10px] font-sans font-extrabold text-amber-300 bg-black/40 px-2 py-0.5 rounded tracking-wide border border-rose-800/30">
                 ¡FOMO!
@@ -222,7 +212,7 @@ export default function OfferCheckout({ isOpen, onOpenChange }: OfferCheckoutPro
                 {/* Scarcity / Urgency timer in checkout */}
                 <div className="mt-4 bg-rose-950/40 border border-rose-900/35 py-2 px-3.5 rounded-xl text-center text-xs text-rose-200 font-sans font-bold flex items-center justify-center gap-1.5 animate-pulse">
                   <span>⏱️ ¡Cupo reservado! Tu oferta expira en:</span>
-                  <span className="text-amber-300 font-mono font-black">{formatReserveTime(reserveTime)}</span>
+                  <span className="text-amber-300 font-mono font-black">{formatReserveTime(timeLeft)}</span>
                 </div>
               </div>
 

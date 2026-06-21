@@ -2,37 +2,22 @@ import React, { useState, useEffect } from 'react';
 import { Flame, Clock, Sparkles, LogIn, TrendingDown, Users } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
-export default function UrgencyBanner() {
-  const [timeLeft, setTimeLeft] = useState(895); // 14 mins 55 seconds
-  const [spotsLeft, setSpotsLeft] = useState(7);
+interface UrgencyBannerProps {
+  timeLeft: number;
+  spotsLeft: number;
+}
+
+export default function UrgencyBanner({ timeLeft, spotsLeft }: UrgencyBannerProps) {
   const [activeAlert, setActiveAlert] = useState<string | null>(null);
+  const [lastSpots, setLastSpots] = useState(spotsLeft);
 
-  // Countdown clock logic
+  // Trigger popup notifications dynamically on real spot reductions
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeLeft((prev) => (prev > 10 ? prev - 1 : 895));
-    }, 1000);
-    return () => clearInterval(timer);
-  }, []);
-
-  // Soft spot-reduction dynamic simulation for FOMO
-  useEffect(() => {
-    const reductionTimes = [15000, 42000, 78000, 115000];
-    const timers = reductionTimes.map((delay) => {
-      return setTimeout(() => {
-        setSpotsLeft((prev) => {
-          const nextVal = prev > 2 ? prev - 1 : 2;
-          // Spawn temporary notification to break user's pattern
-          showNotification(nextVal);
-          return nextVal;
-        });
-      }, delay);
-    });
-
-    return () => {
-      timers.forEach((t) => clearTimeout(t));
-    };
-  }, []);
+    if (spotsLeft < lastSpots) {
+      showNotification(spotsLeft);
+    }
+    setLastSpots(spotsLeft);
+  }, [spotsLeft, lastSpots]);
 
   const showNotification = (remainingSpots: number) => {
     const randomCities = ['Bogotá', 'Medellín', 'Santiago', 'Ciudad de México', 'Lima', 'Buenos Aires', 'Quito', 'San José'];
