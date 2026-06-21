@@ -2,7 +2,7 @@
  * Helper to dispatch standard Meta Pixel (Facebook Pixel) events.
  */
 export function trackInitiateCheckout() {
-  console.log('⚡ [Meta Pixel] Tracking standard "InitiateCheckout" event for ID 1350973086969770...');
+  console.log('⚡ [Meta Pixel] Tracking standard "InitiateCheckout" event for ID 985674414285483...');
   if (typeof window !== 'undefined') {
     const w = window as any;
     if (w.fbq) {
@@ -21,3 +21,5 @@ export function trackInitiateCheckout() {
     }
   }
 }
+
+
