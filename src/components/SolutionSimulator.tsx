@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
   ShieldCheck, 
@@ -21,7 +21,9 @@ import {
   Clock, 
   Sparkles,
   PieChart,
-  Grid
+  Grid,
+  ZoomIn,
+  X
 } from 'lucide-react';
 
 interface SolutionSimulatorProps {
@@ -29,6 +31,7 @@ interface SolutionSimulatorProps {
 }
 
 export default function SolutionSimulator({ onCtaClick }: SolutionSimulatorProps) {
+  const [activeImage, setActiveImage] = useState<string | null>(null);
   
   const snowballFeatures = [
     { title: "Balance de Deuda", desc: "Monitorea el saldo insoluto en tiempo real de cada una de tus cuentas y pasivos." },
@@ -111,15 +114,24 @@ export default function SolutionSimulator({ onCtaClick }: SolutionSimulatorProps
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="relative w-full max-w-lg bg-white rounded-3xl p-2.5 shadow-2.5xl border border-slate-100/80 group overflow-hidden"
+              onClick={() => setActiveImage("https://i.postimg.cc/Kjm6XtFx/Chat-GPT-Image-20-jun-2026-23-21-28.png")}
+              className="relative w-full max-w-lg bg-white rounded-3xl p-2.5 shadow-2xl border border-slate-200/80 group overflow-hidden cursor-zoom-in"
             >
-              <div className="relative overflow-hidden rounded-2xl bg-slate-50 aspect-[4/3]">
+              <div className="relative overflow-hidden rounded-2xl bg-white aspect-[4/3] flex items-center justify-center p-1.5 border border-slate-100/50">
                 <img 
-                  src="https://i.postimg.cc/63MXp7Tk/95015d37-0807-45e5-9d49-1958df1ce503.jpg" 
+                  src="https://i.postimg.cc/Kjm6XtFx/Chat-GPT-Image-20-jun-2026-23-21-28.png" 
                   alt="Planilla de Pago de Deudas Bola de Nieve" 
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                  className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-emerald-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1.5">
+                  <div className="p-2.5 rounded-full bg-white text-emerald-800 shadow-md">
+                    <ZoomIn className="w-5 h-5 animate-pulse" />
+                  </div>
+                  <span className="text-[11px] font-sans font-bold text-white tracking-wide bg-emerald-950/80 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                    🔍 Clic para ampliar y ver letras claras
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -141,15 +153,24 @@ export default function SolutionSimulator({ onCtaClick }: SolutionSimulatorProps
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="relative w-full max-w-lg bg-white rounded-3xl p-2.5 shadow-2.5xl border border-slate-100/80 group overflow-hidden"
+              onClick={() => setActiveImage("https://i.postimg.cc/C1cgxZdW/c1f8e0ea-bf36-433f-a03b-414966154391.jpg")}
+              className="relative w-full max-w-lg bg-white rounded-3xl p-2.5 shadow-2xl border border-slate-200/80 group overflow-hidden cursor-zoom-in"
             >
-              <div className="relative overflow-hidden rounded-2xl bg-slate-50 aspect-[4/3]">
+              <div className="relative overflow-hidden rounded-2xl bg-white aspect-[4/3] flex items-center justify-center p-1.5 border border-slate-100/50">
                 <img 
                   src="https://i.postimg.cc/C1cgxZdW/c1f8e0ea-bf36-433f-a03b-414966154391.jpg" 
                   alt="Planilla de Fondo de Ahorros Inteligente" 
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
+                  className="w-full h-full object-contain group-hover:scale-[1.04] transition-transform duration-500"
                 />
+                <div className="absolute inset-0 bg-emerald-950/40 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center gap-1.5">
+                  <div className="p-2.5 rounded-full bg-white text-emerald-800 shadow-md">
+                    <ZoomIn className="w-5 h-5 animate-pulse" />
+                  </div>
+                  <span className="text-[11px] font-sans font-bold text-white tracking-wide bg-emerald-950/80 px-2.5 py-1 rounded-full backdrop-blur-sm">
+                    🔍 Clic para ampliar y ver letras claras
+                  </span>
+                </div>
               </div>
             </motion.div>
           </div>
@@ -251,6 +272,43 @@ export default function SolutionSimulator({ onCtaClick }: SolutionSimulatorProps
         </div>
 
       </div>
+
+      {/* High-Resolution Modal Image Zoom */}
+      {activeImage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8 bg-slate-950/95 backdrop-blur-md">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="relative w-full max-w-5xl h-full max-h-[85vh] flex flex-col items-center justify-center bg-white/5 rounded-3xl p-4 border border-white/10 shadow-2xl"
+          >
+            {/* Close Button */}
+            <button
+              onClick={() => setActiveImage(null)}
+              className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 text-white rounded-full p-2.5 transition-colors focus:outline-none focus:ring-2 focus:ring-emerald-400 z-10 cursor-pointer"
+              title="Cerrar"
+            >
+              <X className="w-6 h-6" />
+            </button>
+            <div className="w-full h-full flex items-center justify-center overflow-auto p-2">
+              <img
+                src={activeImage}
+                alt="Planilla en Alta Resolución"
+                referrerPolicy="no-referrer"
+                className="max-w-full max-h-full object-contain rounded-xl shadow-lg border border-white/5"
+              />
+            </div>
+            <div className="text-center mt-3">
+              <button
+                onClick={() => setActiveImage(null)}
+                className="text-xs font-sans font-bold text-slate-350 hover:text-white bg-white/10 hover:bg-white/15 px-4 py-2 rounded-full transition-colors uppercase tracking-wider cursor-pointer"
+              >
+                Volver a la página
+              </button>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
     </section>
   );
 }
