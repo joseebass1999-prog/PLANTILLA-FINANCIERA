@@ -63,7 +63,7 @@ export default function OfferCheckout({ isOpen, onOpenChange }: OfferCheckoutPro
         <div className="max-w-4xl mx-auto text-center relative z-10">
           
           {/* Tag */}
-          <div className="inline-flex gap-1 items-center px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs font-semibold mb-6">
+          <div className="inline-flex gap-1 items-center px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-sans text-xs font-semibold mb-6">
             <Sparkles className="w-3.5 h-3.5 animate-pulse" />
             Oferta de Lanzamiento Única
           </div>
@@ -78,7 +78,7 @@ export default function OfferCheckout({ isOpen, onOpenChange }: OfferCheckoutPro
           {/* Pricing Box / Offer Card */}
           <div className="bg-slate-950 p-8 md:p-12 rounded-3xl border border-slate-800 max-w-xl mx-auto shadow-2xl relative">
             {/* Top recommendation Tag */}
-            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 text-[10px] font-mono font-black py-1 px-4 rounded-full uppercase tracking-wider">
+            <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 text-[10px] font-sans font-black py-1 px-4 rounded-full uppercase tracking-wider">
               ¡Mejor Opción! Acceso Vitalicio
             </div>
 

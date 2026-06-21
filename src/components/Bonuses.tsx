@@ -38,7 +38,7 @@ export default function Bonuses() {
         <div className="bg-white border-2 border-dashed border-emerald-500/80 rounded-3xl p-6 md:p-10 shadow-xl shadow-emerald-50/40 relative">
           
           {/* Floating gift tag badge */}
-          <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-emerald-600 text-white flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-mono font-bold uppercase tracking-wider shadow-lg shadow-emerald-600/25">
+          <div className="absolute -top-5 left-1/2 -translate-x-1/2 bg-emerald-600 text-white flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-sans font-bold uppercase tracking-wider shadow-lg shadow-emerald-600/25">
             <Gift className="w-4 h-4" />
             Valor del Pack de Bonos: $71 USD GRATIS
           </div>

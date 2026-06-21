@@ -26,7 +26,7 @@ export default function Header({ onBuyClick }: HeaderProps) {
 
         {/* Small Action Button */}
         <div className="flex items-center gap-4">
-          <span className="hidden sm:inline text-xs font-mono font-medium text-slate-500 bg-slate-50 py-1 px-2.5 rounded-full border border-slate-100">
+          <span className="hidden sm:inline text-xs font-sans font-semibold text-slate-600 bg-slate-50 py-1 px-3 rounded-full border border-slate-100">
             Acceso vitalicio $9 USD
           </span>
           <motion.button
