@@ -244,13 +244,13 @@ export default function Videos() {
                   </button>
                 </div>
 
-                {/* Embedded Video Link (Google Drive Preview for works, YouTube embed for real) */}
+                {/* Embedded Video Link (Google Drive Preview) */}
                 <div className="relative overflow-hidden rounded-2xl bg-black aspect-[16/9] ring-1 ring-white/10 shadow-inner">
                   <iframe 
                     src={activeVideo === 'works' 
                       ? "https://drive.google.com/file/d/1nMX0M863XnJ2lqi92PLZqahrpvkI3LQ-/preview" 
-                      : "https://www.youtube.com/embed/-gdRJwJ7WNQ?si=8gjN4QOY32iV79Nb&autoplay=1"} 
-                    title={activeVideo === 'works' ? "Video de Demostración" : "YouTube video player"} 
+                      : "https://drive.google.com/file/d/1-YCjKgzXWE0_uYaJOSL404GpjPkaMZ9G/preview"} 
+                    title={activeVideo === 'works' ? "Video de Demostración" : "Video de Caso Real"} 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
                     referrerPolicy="strict-origin-when-cross-origin" 
