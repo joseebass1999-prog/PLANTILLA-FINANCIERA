@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { CheckCircle2, ShoppingBag, Mail, CreditCard, Lock, Sparkles, CheckSquare, RefreshCw, Star } from 'lucide-react';
+import { trackInitiateCheckout } from '../lib/metaPixel';
 
 interface OfferCheckoutProps {
   isOpen: boolean;
@@ -151,11 +152,14 @@ export default function OfferCheckout({ isOpen, onOpenChange, timeLeft, spotsLef
               </div>
             </div>
 
-            {/* CTA Button Triggering Modal */}
+             {/* CTA Button Triggering Hotmart Checkout */}
             <motion.button
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              onClick={() => onOpenChange(true)}
+              onClick={() => {
+                trackInitiateCheckout();
+                window.open("https://pay.hotmart.com/R104208803Q?off=09ya5out&checkoutMode=10", "_blank");
+              }}
               id="cta-buy-offer-button"
               className="cursor-pointer w-full bg-emerald-500 text-slate-950 font-sans font-black text-base md:text-lg py-4 px-6 rounded-2xl flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/20 hover:bg-emerald-400 transition-colors"
             >

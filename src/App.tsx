@@ -17,6 +17,7 @@ import OfferCheckout from './components/OfferCheckout';
 import Warranty from './components/Warranty';
 import Footer from './components/Footer';
 import ExitIntentPopup from './components/ExitIntentPopup';
+import { trackInitiateCheckout } from './lib/metaPixel';
 
 export default function App() {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -88,7 +89,8 @@ export default function App() {
   }, []);
 
   const handleOpenCheckout = () => {
-    setIsCheckoutOpen(true);
+    trackInitiateCheckout();
+    window.open("https://pay.hotmart.com/R104208803Q?off=09ya5out&checkoutMode=10", "_blank");
   };
 
   return (

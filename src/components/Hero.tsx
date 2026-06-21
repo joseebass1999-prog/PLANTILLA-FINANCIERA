@@ -47,14 +47,14 @@ export default function Hero({ onCtaClick }: HeroProps) {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="font-sans text-slate-650 text-base md:text-lg leading-relaxed max-w-xl mb-8"
+            className="font-sans text-slate-650 text-base md:text-lg leading-relaxed max-w-xl mb-8 font-medium"
           >
-            Sistema{" "}
+            La tranquilidad financiera no llega cuando ganas más dinero. Llega cuando sabes{" "}
             <span className="relative inline-block font-extrabold px-2 py-0.5 mx-[1px]">
               <span className="absolute inset-0 bg-amber-300 -rotate-1 rounded-md shadow-sm border border-amber-400" />
-              <span className="relative text-amber-950 font-black">simple</span>
+              <span className="relative text-amber-950 font-black">exactamente</span>
             </span>{" "}
-            para ver exactamente en qué se va tu dinero y recuperar el control financiero absoluto en minutos. Sin complicaciones técnicas.
+            qué hacer con él.
           </motion.p>
 
           {/* CTA & Trust */}
