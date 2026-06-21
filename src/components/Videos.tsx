@@ -91,44 +91,52 @@ export default function Videos() {
         </div>
 
         {/* Video Column Group */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 max-w-[620px] mx-auto mb-12">
           
           {/* Video 1: "Cómo funciona" */}
           <div className="flex flex-col items-center">
             <h3 className="font-sans font-bold text-lg text-slate-800 mb-3.5 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Vídeo 1: “Cómo funciona”
             </h3>
             
             {/* Play Button Outer Frame */}
             <div 
               onClick={() => handleOpenPlay('works')}
-              className="cursor-pointer relative w-full aspect-[16/9] rounded-2xl bg-slate-950 border border-slate-200/80 overflow-hidden shadow-lg group"
+              className="cursor-pointer relative w-full aspect-[9/16] max-w-[280px] rounded-3xl bg-slate-950 border-4 border-slate-900 overflow-hidden shadow-2xl group ring-1 ring-slate-800/50"
             >
-              {/* Dummy Image Thumbnail inside Player */}
-              <div className="absolute inset-0 bg-slate-900 flex flex-col justify-between p-4 z-0 group-hover:scale-[1.02] transition-transform duration-500">
-                <div className="flex justify-between items-center w-full">
-                  <span className="text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-mono px-2 py-0.5 rounded">Tutorial</span>
-                  <span className="text-[10px] text-slate-500 font-mono">1:42</span>
+              {/* Dummy Image Thumbnail inside Player simulating a Smartphone Screen */}
+              <div className="absolute inset-0 bg-slate-900 flex flex-col justify-between p-5 z-0 group-hover:scale-[1.03] transition-transform duration-500">
+                {/* Simulated Phone Top Bar */}
+                <div className="flex justify-between items-center w-full text-[9px] text-slate-500 font-mono">
+                  <span>9:41</span>
+                  <div className="flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-emerald-500/20" />
+                    <span className="w-3 h-1.5 border border-slate-500 rounded-sm inline-block" />
+                  </div>
                 </div>
                 
-                {/* Visual Representation of Dashboard */}
-                <div className="space-y-2 max-w-[80%] mx-auto mt-2">
-                  <div className="h-2 bg-slate-800 rounded w-full" />
-                  <div className="h-2 bg-slate-800 rounded w-3/4" />
-                  <div className="h-6 bg-emerald-500/10 rounded w-1/2 mx-auto flex items-center justify-center border border-emerald-500/10">
-                    <span className="text-[8px] text-emerald-400 font-mono">Panel de Control</span>
+                {/* Visual Reel Icon and Badges */}
+                <div className="my-auto space-y-4 text-center">
+                  <div className="w-14 h-14 rounded-full bg-emerald-500/10 flex items-center justify-center mx-auto border border-emerald-500/20 shadow-inner group-hover:bg-emerald-500/20 transition-all duration-300">
+                    <Sparkles className="w-6 h-6 text-emerald-400" />
+                  </div>
+                  <div className="space-y-1">
+                    <span className="text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-semibold font-sans px-2.5 py-1 rounded-full uppercase tracking-wider">REEL FORMAT</span>
+                    <h4 className="text-sm font-bold text-slate-200 font-sans">Cómo funciona</h4>
+                    <p className="text-[10px] text-slate-400 font-sans">Demostración interactiva</p>
                   </div>
                 </div>
 
-                <div className="text-left">
+                {/* Bottom section of phone mock */}
+                <div className="text-left border-t border-slate-800/80 pt-3">
                   <p className="text-xs font-semibold text-slate-300">Pestaña Principal</p>
-                  <p className="text-[10px] text-slate-500 font-mono">Presupuesto consolidado automático</p>
+                  <p className="text-[10px] text-slate-500 font-sans leading-tight mt-0.5">Presupuesto consolidado automático</p>
                 </div>
               </div>
 
               {/* Hover shade overlay */}
-              <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/30 transition-colors duration-300" />
 
               {/* Play Button */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -138,9 +146,9 @@ export default function Videos() {
                 </div>
               </div>
 
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-3/4 text-center pointer-events-none">
-                <span className="text-[9px] font-mono text-white/50 inline-flex items-center gap-1.5 bg-black/60 px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm">
-                  <MousePointerClick className="w-2.5 h-2.5" /> Ver interactivo
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-4/5 text-center pointer-events-none">
+                <span className="text-[10px] font-sans font-bold text-white inline-flex items-center gap-1.5 bg-black/75 px-3 py-1.5 rounded-full uppercase tracking-wider backdrop-blur-md border border-white/10 shadow-lg">
+                  <MousePointerClick className="w-3 h-3 text-emerald-400" /> Ver reel
                 </span>
               </div>
             </div>
@@ -149,41 +157,47 @@ export default function Videos() {
           {/* Video 2: “Ejemplo real” */}
           <div className="flex flex-col items-center">
             <h3 className="font-sans font-bold text-lg text-slate-800 mb-3.5 flex items-center gap-2">
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
               Vídeo 2: “Ejemplo real”
             </h3>
             
             {/* Play Button Outer Frame */}
             <div 
               onClick={() => handleOpenPlay('real')}
-              className="cursor-pointer relative w-full aspect-[16/9] rounded-2xl bg-slate-950 border border-slate-200/80 overflow-hidden shadow-lg group"
+              className="cursor-pointer relative w-full aspect-[9/16] max-w-[280px] rounded-3xl bg-slate-950 border-4 border-slate-900 overflow-hidden shadow-2xl group ring-1 ring-slate-800/50"
             >
-              {/* Dummy Image Thumbnail inside Player */}
-              <div className="absolute inset-0 bg-slate-900 flex flex-col justify-between p-4 z-0 group-hover:scale-[1.02] transition-transform duration-500">
-                <div className="flex justify-between items-center w-full">
-                  <span className="text-[10px] bg-blue-500/20 text-blue-400 border border-blue-500/30 font-mono px-2 py-0.5 rounded font-bold">Caso Práctico</span>
-                  <span className="text-[10px] text-slate-500 font-mono">2:10</span>
+              {/* Dummy Image Thumbnail inside Player simulating a Smartphone Screen */}
+              <div className="absolute inset-0 bg-slate-900 flex flex-col justify-between p-5 z-0 group-hover:scale-[1.03] transition-transform duration-500">
+                {/* Simulated Phone Top Bar */}
+                <div className="flex justify-between items-center w-full text-[9px] text-slate-500 font-mono">
+                  <span>9:41</span>
+                  <div className="flex items-center gap-1">
+                    <span className="w-2 h-2 rounded-full bg-blue-500/20" />
+                    <span className="w-3 h-1.5 border border-slate-500 rounded-sm inline-block" />
+                  </div>
                 </div>
                 
-                {/* Visual Representation of Dashboard */}
-                <div className="space-y-2 max-w-[80%] mx-auto mt-2">
-                  <div className="flex gap-2 justify-center">
-                    <div className="w-4 h-4 rounded-full bg-rose-500/20 border border-rose-500/30" />
-                    <div className="w-4 h-4 rounded-full bg-amber-500/20 border border-amber-500/30" />
-                    <div className="w-4 h-4 rounded-full bg-emerald-500/20 border border-emerald-500/30" />
+                {/* Visual Reel Icon and Badges */}
+                <div className="my-auto space-y-4 text-center">
+                  <div className="w-14 h-14 rounded-full bg-blue-500/10 flex items-center justify-center mx-auto border border-blue-500/20 shadow-inner group-hover:bg-blue-500/20 transition-all duration-300">
+                    <Play className="w-5 h-5 text-blue-400 fill-blue-400/20 ml-0.5" />
                   </div>
-                  <div className="h-2 bg-slate-800 rounded w-2/3 mx-auto" />
-                  <div className="h-4 bg-slate-800/80 rounded" />
+                  <div className="space-y-1">
+                    <span className="text-[10px] bg-blue-500/20 text-blue-400 border border-blue-500/30 font-semibold font-sans px-2.5 py-1 rounded-full uppercase tracking-wider">REEL FORMAT</span>
+                    <h4 className="text-sm font-bold text-slate-200 font-sans">Ejemplo Real</h4>
+                    <p className="text-[10px] text-slate-400 font-sans">Simulación práctica en vivo</p>
+                  </div>
                 </div>
 
-                <div className="text-left">
+                {/* Bottom section of phone mock */}
+                <div className="text-left border-t border-slate-800/80 pt-3">
                   <p className="text-xs font-semibold text-slate-300">Gasto Imprevisto</p>
-                  <p className="text-[10px] text-slate-500 font-mono">Caso real: Reparación del auto</p>
+                  <p className="text-[10px] text-slate-500 font-sans leading-tight mt-0.5">Caso real de reparación de auto</p>
                 </div>
               </div>
 
               {/* Hover shade overlay */}
-              <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/30 transition-colors duration-300" />
 
               {/* Play Button */}
               <div className="absolute inset-0 flex items-center justify-center">
@@ -193,9 +207,9 @@ export default function Videos() {
                 </div>
               </div>
 
-              <div className="absolute bottom-3 left-1/2 -translate-x-1/2 w-3/4 text-center pointer-events-none">
-                <span className="text-[9px] font-mono text-white/50 inline-flex items-center gap-1.5 bg-black/60 px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-sm">
-                  <MousePointerClick className="w-2.5 h-2.5" /> Ver caso práctico
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-4/5 text-center pointer-events-none">
+                <span className="text-[10px] font-sans font-bold text-white inline-flex items-center gap-1.5 bg-black/75 px-3 py-1.5 rounded-full uppercase tracking-wider backdrop-blur-md border border-white/10 shadow-lg">
+                  <MousePointerClick className="w-3 h-3 text-emerald-400" /> Ver reel
                 </span>
               </div>
             </div>
@@ -226,14 +240,14 @@ export default function Videos() {
                 initial={{ opacity: 0, scale: 0.95, y: 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 15 }}
-                className="bg-slate-900 rounded-3xl p-3 md:p-4 max-w-4xl w-full shadow-2.5xl relative z-10 border border-slate-800"
+                className="bg-slate-900 rounded-3xl p-3 md:p-4 max-w-[360px] w-full shadow-2.5xl relative z-10 border border-slate-800"
               >
                 {/* Header info bar */}
                 <div className="flex items-center justify-between px-3 pb-3 mb-2 border-b border-slate-800">
                   <div className="flex items-center gap-2">
                     <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                     <span className="text-xs uppercase tracking-wider font-semibold font-mono text-slate-400">
-                      {activeVideo === 'works' ? 'Demostración: ¿Cómo funciona?' : 'Simulación: Caso Real en vivo'}
+                      {activeVideo === 'works' ? 'Demostración: Reel' : 'Simulación: Reel'}
                     </span>
                   </div>
                   <button 
@@ -245,7 +259,7 @@ export default function Videos() {
                 </div>
 
                 {/* Embedded Video Link */}
-                <div className="relative overflow-hidden rounded-2xl bg-black aspect-[16/9] ring-1 ring-white/10 shadow-inner">
+                <div className="relative overflow-hidden rounded-2xl bg-black aspect-[9/16] ring-1 ring-white/10 shadow-inner">
                   <iframe 
                     src={activeVideo === 'works' 
                       ? "https://jumpshare.com/embed/mVRcTuwZq3455BQAVkMS" 
