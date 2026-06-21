@@ -12,45 +12,10 @@ export default function ExitIntentPopup({ onCtaClick }: ExitIntentPopupProps) {
   const [funnyPhase, setFunnyPhase] = useState<'initial' | 'raccooned' | 'saved'>('initial');
 
   useEffect(() => {
-    // 1. Desktop exit intent check: mouse leaves the window top bounds
-    const handleMouseLeave = (e: MouseEvent) => {
-      if (hasTriggered) return;
-      if (e.clientY < 20) {
-        setIsVisible(true);
-        setHasTriggered(true);
-      }
-    };
-
-    // 2. Mobile backup trigger: after 35 seconds or scroll depth 65%
-    const handleScroll = () => {
-      if (hasTriggered) return;
-      const scrollPercent = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight;
-      if (scrollPercent > 0.65) {
-        const timer = setTimeout(() => {
-          setIsVisible(true);
-          setHasTriggered(true);
-        }, 15000); // Trigger 15s after they read 65% of the page
-        return () => clearTimeout(timer);
-      }
-    };
-
-    document.addEventListener('mouseleave', handleMouseLeave);
-    window.addEventListener('scroll', handleScroll);
-
-    // Backup automatic timer for extreme safety
-    const safetyTimer = setTimeout(() => {
-      if (!hasTriggered) {
-        setIsVisible(true);
-        setHasTriggered(true);
-      }
-    }, 55000); // 55 seconds safety trigger
-
-    return () => {
-      document.removeEventListener('mouseleave', handleMouseLeave);
-      window.removeEventListener('scroll', handleScroll);
-      clearTimeout(safetyTimer);
-    };
-  }, [hasTriggered]);
+    // TEMPORARILY DISABLED: Removed mouseleave, scroll, and timer triggers
+    // to check for potential interference with the Meta Event Setup Tool.
+    // The rest of the component design and UI functions are preserved.
+  }, []);
 
   const handleClose = () => {
     setIsVisible(false);
