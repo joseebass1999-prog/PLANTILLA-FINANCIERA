@@ -129,7 +129,7 @@ export default function SolutionSimulator({ onCtaClick }: SolutionSimulatorProps
               {/* High-quality generated mockup representation */}
               <div className="relative overflow-hidden rounded-2xl bg-slate-950 aspect-[4/3]">
                 <img 
-                  src="/src/assets/images/debt_snowball_sheet_mockup_1782000533699.jpg" 
+                  src="https://i.postimg.cc/63MXp7Tk/95015d37-0807-45e5-9d49-1958df1ce503.jpg" 
                   alt="Planilla de Pago de Deudas Bola de Nieve" 
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
@@ -179,7 +179,7 @@ export default function SolutionSimulator({ onCtaClick }: SolutionSimulatorProps
               {/* High-quality generated mockup representation */}
               <div className="relative overflow-hidden rounded-2xl bg-slate-950 aspect-[4/3]">
                 <img 
-                  src="/src/assets/images/savings_fund_sheet_mockup_1782000518186.jpg" 
+                  src="https://i.postimg.cc/C1cgxZdW/c1f8e0ea-bf36-433f-a03b-414966154391.jpg" 
                   alt="Planilla de Fondo de Ahorros Inteligente" 
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover"
