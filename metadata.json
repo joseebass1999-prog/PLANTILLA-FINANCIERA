@@ -1,0 +1,6 @@
+{
+  "name": "Dinero en Orden",
+  "description": "Landing page de ventas de alta conversión para el sistema de control financiero Dinero en Orden.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
