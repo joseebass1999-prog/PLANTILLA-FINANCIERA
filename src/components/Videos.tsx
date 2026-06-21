@@ -208,98 +208,60 @@ export default function Videos() {
           “Si sabes escribir números, puedes usarlo.”
         </p>
 
-        {/* Dynamic Interactive Presentation Overlay (if active) */}
+        {/* Dynamic YouTube Video Player Modal */}
         <AnimatePresence>
           {activeVideo && (
             <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-              {/* Blur backdrop overlay */}
+              {/* Cinematic dark overlay */}
               <motion.div 
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 onClick={() => setActiveVideo(null)}
-                className="absolute inset-0 bg-slate-900/60 backdrop-blur-sm"
+                className="absolute inset-0 bg-slate-950/85 backdrop-blur-md"
               />
 
-              {/* Presentation Card */}
+              {/* Video Player Card */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.95, y: 15 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.95, y: 15 }}
-                className="bg-white rounded-3xl p-6 md:p-8 max-w-lg w-full shadow-2xl relative z-10 border border-slate-100"
+                className="bg-slate-900 rounded-3xl p-3 md:p-4 max-w-4xl w-full shadow-2.5xl relative z-10 border border-slate-800"
               >
-                {/* Close Button */}
-                <button 
-                  onClick={() => setActiveVideo(null)}
-                  className="cursor-pointer absolute top-4 right-4 bg-slate-100 text-slate-500 hover:text-slate-800 p-2 rounded-full transition-colors"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-
-                {/* Video Header inside modal */}
-                <div className="flex items-center gap-2 mb-6">
-                  <div className="w-7 h-7 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
-                    <Sparkles className="w-4 h-4" />
+                {/* Header info bar */}
+                <div className="flex items-center justify-between px-3 pb-3 mb-2 border-b border-slate-800">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                    <span className="text-xs uppercase tracking-wider font-semibold font-mono text-slate-400">
+                      {activeVideo === 'works' ? 'Demostración: ¿Cómo funciona?' : 'Simulación: Caso Real en vivo'}
+                    </span>
                   </div>
-                  <span className="font-display font-bold text-slate-800 text-sm">
-                    {activeVideo === 'works' ? 'Demostración: ¿Cómo funciona?' : 'Simulación: Caso Real en vivo'}
-                  </span>
-                </div>
-
-                {/* Progress bar of presentation */}
-                <div className="grid grid-cols-4 gap-1.5 mb-6">
-                  {videoSteps[activeVideo].map((_, stepIdx) => (
-                    <div 
-                      key={stepIdx} 
-                      className={`h-1.5 rounded-full ${stepIdx <= currentStep ? 'bg-emerald-500' : 'bg-slate-100'}`} 
-                    />
-                  ))}
-                </div>
-
-                {/* Step Content */}
-                <div className="min-h-[160px] text-left">
-                  <span className="font-mono text-[10px] font-bold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded uppercase tracking-wider">
-                    {videoSteps[activeVideo][currentStep].badge}
-                  </span>
-                  <h4 className="font-sans font-bold text-lg text-slate-800 tracking-tight mt-3 mb-2">
-                    {videoSteps[activeVideo][currentStep].title}
-                  </h4>
-                  <p className="font-sans text-slate-500 text-sm leading-relaxed mb-4">
-                    {videoSteps[activeVideo][currentStep].desc}
-                  </p>
-                  
-                  {/* Useful tip box */}
-                  <div className="bg-slate-50 border-l-2 border-slate-300 p-3 rounded-r-lg">
-                    <span className="text-[10px] font-mono text-slate-400 font-bold uppercase tracking-wider">Tip de inversión:</span>
-                    <p className="text-xs text-slate-600 italic mt-0.5">{videoSteps[activeVideo][currentStep].tip}</p>
-                  </div>
-                </div>
-
-                {/* Next CTA inside modal */}
-                <div className="flex justify-between items-center mt-6 pt-4 border-t border-slate-100">
                   <button 
                     onClick={() => setActiveVideo(null)}
-                    className="cursor-pointer text-xs font-semibold text-slate-400 hover:text-slate-600 transition-colors"
+                    className="cursor-pointer text-slate-400 hover:text-white p-1 rounded-lg transition-colors bg-slate-800 hover:bg-slate-705"
                   >
-                    Saltar intro
+                    <X className="w-4 h-4" />
                   </button>
-                  
-                  <button
-                    onClick={() => handleNextStep(videoSteps[activeVideo].length)}
-                    className="cursor-pointer inline-flex items-center gap-1.5 px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-sans font-bold text-xs rounded-xl shadow-md transition-all active:scale-95"
-                  >
-                    {currentStep < videoSteps[activeVideo].length - 1 ? (
-                      <>
-                        Siguiente paso
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </>
-                    ) : (
-                      <>
-                        Entendido, cerrar
-                        <Check className="w-3.5 h-3.5" />
-                      </>
-                    )}
-                  </button>
+                </div>
+
+                {/* Embedded YouTube Iframe with perfect 16:9 responsiveness */}
+                <div className="relative overflow-hidden rounded-2xl bg-black aspect-[16/9] ring-1 ring-white/10 shadow-inner">
+                  <iframe 
+                    src="https://www.youtube.com/embed/-gdRJwJ7WNQ?si=8gjN4QOY32iV79Nb&autoplay=1" 
+                    title="YouTube video player" 
+                    frameBorder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                    referrerPolicy="strict-origin-when-cross-origin" 
+                    allowFullScreen
+                    className="absolute inset-0 w-full h-full"
+                  />
+                </div>
+
+                {/* Quick note underneath video */}
+                <div className="mt-3 text-center">
+                  <p className="text-xs text-slate-500 font-mono">
+                    Video de demostración instructiva paso a paso
+                  </p>
                 </div>
               </motion.div>
             </div>
