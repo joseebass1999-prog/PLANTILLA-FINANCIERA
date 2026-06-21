@@ -111,35 +111,15 @@ export default function SolutionSimulator({ onCtaClick }: SolutionSimulatorProps
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="relative w-full max-w-lg bg-slate-900 rounded-3xl p-3 shadow-2.5xl ring-1 ring-slate-800"
+              className="relative w-full max-w-lg bg-white rounded-3xl p-2.5 shadow-2.5xl border border-slate-100/80 group overflow-hidden"
             >
-              {/* Browser control mock bar */}
-              <div className="flex items-center justify-between px-3 pb-2.5 pt-1 border-b border-slate-800/80 mb-2">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-                  <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                  <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-                </div>
-                <div className="bg-slate-950/80 text-[9px] text-slate-400 font-mono py-0.5 px-5 rounded-md border border-slate-800/50 flex items-center gap-1">
-                  <span>modulo_bola_de_nieve.xlsx</span>
-                </div>
-                <div className="w-8" />
-              </div>
-
-              {/* High-quality generated mockup representation */}
-              <div className="relative overflow-hidden rounded-2xl bg-slate-950 aspect-[4/3]">
+              <div className="relative overflow-hidden rounded-2xl bg-slate-50 aspect-[4/3]">
                 <img 
                   src="https://i.postimg.cc/63MXp7Tk/95015d37-0807-45e5-9d49-1958df1ce503.jpg" 
                   alt="Planilla de Pago de Deudas Bola de Nieve" 
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
                 />
-                
-                {/* Decorative overlay badge indicating what module this is */}
-                <div className="absolute bottom-3 left-3 bg-slate-950/95 text-[10px] text-amber-400 font-mono font-bold py-1 px-3 rounded-full border border-amber-500/30 flex items-center gap-1.5 backdrop-blur-sm shadow-md">
-                  <Flame className="w-3 h-3 text-amber-500 animate-pulse" />
-                  <span>Módulo Bola de Nieve Incluido</span>
-                </div>
               </div>
             </motion.div>
           </div>
@@ -161,35 +141,15 @@ export default function SolutionSimulator({ onCtaClick }: SolutionSimulatorProps
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="relative w-full max-w-lg bg-slate-900 rounded-3xl p-3 shadow-2.5xl ring-1 ring-slate-800"
+              className="relative w-full max-w-lg bg-white rounded-3xl p-2.5 shadow-2.5xl border border-slate-100/80 group overflow-hidden"
             >
-              {/* Browser control mock bar */}
-              <div className="flex items-center justify-between px-3 pb-2.5 pt-1 border-b border-slate-800/80 mb-2">
-                <div className="flex items-center gap-1.5">
-                  <span className="w-3 h-3 rounded-full bg-rose-500/80 inline-block" />
-                  <span className="w-3 h-3 rounded-full bg-amber-500/80 inline-block" />
-                  <span className="w-3 h-3 rounded-full bg-emerald-500/80 inline-block" />
-                </div>
-                <div className="bg-slate-950/80 text-[9px] text-slate-400 font-mono py-0.5 px-5 rounded-md border border-slate-800/50 flex items-center gap-1">
-                  <span>modulo_fondo_de_ahorros.xlsx</span>
-                </div>
-                <div className="w-8" />
-              </div>
-
-              {/* High-quality generated mockup representation */}
-              <div className="relative overflow-hidden rounded-2xl bg-slate-950 aspect-[4/3]">
+              <div className="relative overflow-hidden rounded-2xl bg-slate-50 aspect-[4/3]">
                 <img 
                   src="https://i.postimg.cc/C1cgxZdW/c1f8e0ea-bf36-433f-a03b-414966154391.jpg" 
                   alt="Planilla de Fondo de Ahorros Inteligente" 
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-700"
                 />
-                
-                {/* Decorative overlay badge indicating what module this is */}
-                <div className="absolute bottom-3 left-3 bg-slate-950/95 text-[10px] text-emerald-400 font-mono font-bold py-1 px-3 rounded-full border border-emerald-500/30 flex items-center gap-1.5 backdrop-blur-sm shadow-md">
-                  <Coins className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Espacio para +15 Ahorros</span>
-                </div>
               </div>
             </motion.div>
           </div>

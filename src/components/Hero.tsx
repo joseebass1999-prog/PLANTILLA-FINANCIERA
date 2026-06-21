@@ -105,41 +105,15 @@ export default function Hero({ onCtaClick }: HeroProps) {
               repeat: Infinity,
               ease: "easeInOut"
             }}
-            className="relative w-full max-w-lg bg-white p-2.5 rounded-2xl shadow-xl shadow-slate-100 border border-slate-200/60 group"
+            className="relative w-full max-w-lg bg-white p-2 rounded-2xl shadow-2xl shadow-slate-200/80 border border-slate-150 group overflow-hidden"
           >
-            {/* Window header */}
-            <div className="flex items-center justify-between px-3 pb-2.5 pt-1 border-b border-slate-100">
-              <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
-                <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
-                <span className="w-2.5 h-2.5 rounded-full bg-slate-200" />
-              </div>
-              <span className="text-[10px] text-slate-400 font-mono bg-slate-50 px-4 py-0.5 rounded border border-slate-100">
-                dinero-en-orden-v1.xlsx
-              </span>
-              <div className="w-9" />
-            </div>
-
-            {/* Image content */}
-            <div className="relative aspect-[4/3] rounded-lg overflow-hidden bg-slate-50 border border-slate-100">
+            <div className="relative aspect-[4/3] rounded-xl overflow-hidden bg-slate-50">
               <img
                 src={mockupImg}
                 alt="Dinero en Orden Spreadsheet Mockup"
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-700"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-slate-900/10 via-transparent to-transparent pointer-events-none" />
-            </div>
-
-            {/* Float visual indicator */}
-            <div className="absolute -bottom-4 -left-4 bg-white p-3.5 rounded-xl border border-slate-100 shadow-lg flex items-center gap-3 animate-bounce">
-              <div className="w-8 h-8 rounded-full bg-emerald-50 flex items-center justify-center text-emerald-600 font-bold text-xs">
-                +45%
-              </div>
-              <div>
-                <p className="text-[10px] text-slate-400 font-mono uppercase tracking-wider font-semibold">Tasa de Ahorro</p>
-                <p className="text-xs font-bold text-slate-800">Recuperada este mes</p>
-              </div>
             </div>
           </motion.div>
         </motion.div>
