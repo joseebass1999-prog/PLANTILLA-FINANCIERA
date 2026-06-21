@@ -16,6 +16,7 @@ import Testimonials from './components/Testimonials';
 import OfferCheckout from './components/OfferCheckout';
 import Warranty from './components/Warranty';
 import Footer from './components/Footer';
+import ExitIntentPopup from './components/ExitIntentPopup';
 
 export default function App() {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -61,6 +62,9 @@ export default function App() {
 
       {/* 12. Final CTA y Footer */}
       <Footer onBuyClick={handleOpenCheckout} />
+
+      {/* Pop-up de intención de salida (Ruptura de Patrón y Retención) */}
+      <ExitIntentPopup onCtaClick={handleOpenCheckout} />
     </div>
   );
 }

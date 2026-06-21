@@ -14,7 +14,7 @@ interface HeroProps {
 
 export default function Hero({ onCtaClick }: HeroProps) {
   return (
-    <section className="relative pt-36 pb-20 px-4 md:px-8 bg-gradient-to-b from-[#edf7f2] via-[#f7fcf9] to-[#edf7f2] overflow-hidden text-slate-800 border-b border-emerald-100/60">
+    <section className="relative pt-[180px] md:pt-[160px] pb-20 px-4 md:px-8 bg-gradient-to-b from-[#edf7f2] via-[#f7fcf9] to-[#edf7f2] overflow-hidden text-slate-800 border-b border-emerald-100/60">
       {/* Background soft visual warm accents */}
       <div className="absolute top-1/4 left-1/3 -translate-x-1/2 w-[600px] h-[600px] bg-emerald-300/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute top-1/3 right-10 w-[400px] h-[400px] bg-emerald-200/15 rounded-full blur-2xl pointer-events-none" />

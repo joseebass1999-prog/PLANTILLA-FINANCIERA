@@ -19,6 +19,24 @@ export default function OfferCheckout({ isOpen, onOpenChange }: OfferCheckoutPro
   const [paymentMethod, setPaymentMethod] = useState<'card' | 'paypal' | 'mercadopago'>('card');
   const [coupon, setCoupon] = useState('');
   const [couponApplied, setCouponApplied] = useState(false);
+  const [reserveTime, setReserveTime] = useState(599); // 9 minutes 59 seconds
+
+  React.useEffect(() => {
+    if (!isOpen) {
+      setReserveTime(599); // reset on close
+      return;
+    }
+    const timer = setInterval(() => {
+      setReserveTime((prev) => (prev > 0 ? prev - 1 : 599));
+    }, 1000);
+    return () => clearInterval(timer);
+  }, [isOpen]);
+
+  const formatReserveTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
 
   // Price calculation
   const basePrice = 45;
@@ -104,9 +122,19 @@ export default function OfferCheckout({ isOpen, onOpenChange }: OfferCheckoutPro
               </span>
             </div>
 
-            <div className="text-xs text-slate-400 font-mono mb-8 bg-slate-900 border border-slate-800/80 py-2.5 px-4 rounded-xl flex items-center justify-center gap-2">
+            <div className="text-xs text-slate-400 font-mono mb-3 bg-slate-900 border border-slate-800/80 py-2.5 px-4 rounded-xl flex items-center justify-center gap-2">
               <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping" />
               Acceso inmediato a la plantilla + 4 bonos de regalo
+            </div>
+
+            {/* Escasez y Urgencia: FOMO Scarcity Warning */}
+            <div className="text-xs text-rose-350 font-sans font-bold mb-8 bg-rose-950/40 border border-rose-900/35 py-2 px-3 mx-auto max-w-sm rounded-xl flex items-center justify-between gap-1.5 animate-pulse">
+              <span className="flex items-center gap-1.5 text-left text-[11px] leading-tight text-rose-200">
+                ⚠️ <strong className="text-rose-400 font-black">Cupos limitados:</strong> Quedan solo 7 licencias con descuento para hoy.
+              </span>
+              <span className="shrink-0 text-[10px] font-sans font-extrabold text-amber-300 bg-black/40 px-2 py-0.5 rounded tracking-wide border border-rose-800/30">
+                ¡FOMO!
+              </span>
             </div>
 
             {/* Checklist of what's included */}
@@ -190,6 +218,12 @@ export default function OfferCheckout({ isOpen, onOpenChange }: OfferCheckoutPro
                 </span>
                 <h3 className="font-display font-bold text-xl">Confirmar tu Pedido</h3>
                 <p className="text-xs text-slate-400 mt-1">Completa la compra simulada para descargar la plantilla al instante.</p>
+
+                {/* Scarcity / Urgency timer in checkout */}
+                <div className="mt-4 bg-rose-950/40 border border-rose-900/35 py-2 px-3.5 rounded-xl text-center text-xs text-rose-200 font-sans font-bold flex items-center justify-center gap-1.5 animate-pulse">
+                  <span>⏱️ ¡Cupo reservado! Tu oferta expira en:</span>
+                  <span className="text-amber-300 font-mono font-black">{formatReserveTime(reserveTime)}</span>
+                </div>
               </div>
 
               {/* Steps Handler */}
