@@ -6,7 +6,7 @@
 import { motion } from 'motion/react';
 import { ArrowRight, CheckCircle2 } from 'lucide-react';
 
-const mockupImg = "/src/assets/images/finance_mockup_new_1781998387367.jpg";
+const mockupImg = "https://i.postimg.cc/j5MbSWC1/d294ecd7-4ba8-4cc8-9313-023c13359be6.jpg";
 
 interface HeroProps {
   onCtaClick: () => void;
