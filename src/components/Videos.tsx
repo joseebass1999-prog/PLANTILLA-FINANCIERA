@@ -244,12 +244,12 @@ export default function Videos() {
                   </button>
                 </div>
 
-                {/* Embedded Video Link (Google Drive Preview) */}
+                {/* Embedded Video Link */}
                 <div className="relative overflow-hidden rounded-2xl bg-black aspect-[16/9] ring-1 ring-white/10 shadow-inner">
                   <iframe 
                     src={activeVideo === 'works' 
-                      ? "https://drive.google.com/file/d/1nMX0M863XnJ2lqi92PLZqahrpvkI3LQ-/preview" 
-                      : "https://www.youtube.com/embed/Q6M7iXVBcyU?autoplay=1"} 
+                      ? "https://jumpshare.com/embed/mVRcTuwZq3455BQAVkMS" 
+                      : "https://jumpshare.com/embed/6d8vw2niidTRS4KKo7mF"} 
                     title={activeVideo === 'works' ? "Video de Demostración" : "Video de Caso Real"} 
                     frameBorder="0" 
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
