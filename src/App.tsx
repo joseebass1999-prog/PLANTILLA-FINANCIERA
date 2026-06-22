@@ -17,7 +17,6 @@ import OfferCheckout from './components/OfferCheckout';
 import Warranty from './components/Warranty';
 import Footer from './components/Footer';
 import ExitIntentPopup from './components/ExitIntentPopup';
-import { trackInitiateCheckout, trackViewContent } from './lib/metaPixel';
 
 export default function App() {
   const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
@@ -25,11 +24,6 @@ export default function App() {
   // Unified, Synchronized Countdown clock and Spots left states
   const [timeLeft, setTimeLeft] = useState(895); // Starts with 895s (14m 55s)
   const [spotsLeft, setSpotsLeft] = useState(7);
-
-  // Trigger standard Meta Pixel "ViewContent" on page mount
-  useEffect(() => {
-    trackViewContent();
-  }, []);
 
   useEffect(() => {
     const timerStoreKey = 'dinero_countdown_time_v2';
@@ -94,7 +88,6 @@ export default function App() {
   }, []);
 
   const handleOpenCheckout = () => {
-    trackInitiateCheckout();
     window.open("https://pay.hotmart.com/R104208803Q?off=09ya5out&checkoutMode=10", "_blank");
   };
 
