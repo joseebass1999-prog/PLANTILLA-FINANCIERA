@@ -22,4 +22,26 @@ export function trackInitiateCheckout() {
   }
 }
 
+export function trackViewContent() {
+  console.log('⚡ [Meta Pixel] Tracking standard "ViewContent" event for ID 985674414285483...');
+  if (typeof window !== 'undefined') {
+    const w = window as any;
+    if (w.fbq) {
+      try {
+        w.fbq('track', 'ViewContent', {
+          content_name: 'Dinero en Orden Landing Page',
+          content_category: 'Sales Page',
+          currency: 'USD',
+          value: 9.00
+        });
+        console.log('✅ [Meta Pixel] "ViewContent" event dispatched successfully.');
+      } catch (error) {
+        console.error('❌ [Meta Pixel] Failed to dispatch "ViewContent" event:', error);
+      }
+    } else {
+      console.warn('⚠️ [Meta Pixel] window.fbq is not initialized. Event ignored.');
+    }
+  }
+}
+
 
