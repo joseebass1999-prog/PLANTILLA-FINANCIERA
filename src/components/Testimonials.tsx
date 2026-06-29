@@ -1,74 +1,100 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import { Star, MessageSquareQuote } from 'lucide-react';
 import { TESTIMONIALS } from '../data';
+import { Star, ArrowRight } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export default function Testimonials() {
+  const scrollToCheckout = () => {
+    const el = document.getElementById('offer-checkout-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
-    <section className="py-24 px-4 md:px-8 bg-white border-b border-slate-100">
-      <div className="max-w-6xl mx-auto">
+    <section id="testimonials-section" className="py-16 md:py-24 px-6 bg-slate-50 border-y border-emerald-500/10">
+      <div className="max-w-7xl mx-auto">
         
-        {/* Header Block */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 text-emerald-800 font-sans text-xs font-black uppercase tracking-wider rounded-full border border-emerald-500/15 mb-6 shadow-sm shadow-emerald-500/5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span>Testimonios</span>
+        {/* Section Heading */}
+        <div className="text-center mb-16 space-y-3">
+          <span className="text-xs text-[#059669] font-black uppercase tracking-widest bg-emerald-100 border border-emerald-200 px-4 py-1.5 rounded-full">
+            ✦ TESTIMONIOS
           </span>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-slate-900 mt-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 mt-3 uppercase tracking-tight">
             Lo que dicen quienes ya ordenaron sus finanzas
           </h2>
-          <p className="font-sans text-slate-500 mt-3 text-base md:text-lg">
+          <p className="text-slate-600 mt-2 text-sm md:text-base max-w-2xl mx-auto font-medium leading-relaxed">
             Personas reales que recuperaron la claridad de su dinero gracias al sistema. Sin adornos políticos, testimonios honestos de la comunidad.
           </p>
         </div>
 
-        {/* Testimonials Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {TESTIMONIALS.map((t) => (
+        {/* Testimonials grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto text-left">
+          {TESTIMONIALS.map((testimonial) => (
             <div 
-              key={t.id}
-              className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 flex flex-col justify-between text-left relative group hover:bg-slate-50/70 transition-colors"
+              key={testimonial.id} 
+              className="bg-white border border-slate-200/80 rounded-3xl p-6 flex flex-col justify-between relative hover:border-emerald-500/20 transition-all shadow-md"
             >
-              {/* Star Rating & Quote Accent */}
-              <div className="flex justify-between items-center mb-6">
-                <div className="flex gap-1">
-                  {[...Array(t.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+              
+              {/* Success Tag & Stars & Content */}
+              <div>
+                {testimonial.badge && (
+                  <div className="mb-3.5">
+                    <span className="bg-emerald-50 text-[#059669] border border-emerald-150 font-black text-[10px] px-2.5 py-1 rounded-full uppercase tracking-wider block text-center truncate">
+                      ✓ {testimonial.badge}
+                    </span>
+                  </div>
+                )}
+
+                {/* 5-star rating */}
+                <div className="flex items-center gap-0.5 mb-3 text-amber-500">
+                  {[...Array(testimonial.rating)].map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
                   ))}
                 </div>
-                <MessageSquareQuote className="w-8 h-8 text-slate-200/80 group-hover:text-slate-300 transition-colors" />
+ 
+                {/* Actual review text */}
+                <p className="text-slate-600 text-xs md:text-sm leading-relaxed italic mb-6">
+                  "{testimonial.content}"
+                </p>
               </div>
 
-              {/* Quote Statement */}
-              <p className="font-sans text-slate-700 text-sm md:text-base leading-relaxed italic mb-6">
-                "{t.quote}"
-              </p>
-
-              {/* Tag Quote and Profile Block */}
-              <div className="border-t border-slate-200/50 pt-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <img 
-                    src={t.avatar} 
-                    alt={t.name}
-                    className="w-10 h-10 rounded-full object-cover border border-slate-250 shrink-0" 
-                    referrerPolicy="no-referrer"
-                  />
-                  <div>
-                    <h4 className="font-sans font-bold text-sm text-slate-800 leading-none">{t.name}</h4>
-                    <span className="text-[11px] text-slate-500 font-medium mt-1 inline-block">{t.role}</span>
-                  </div>
+              {/* Author info */}
+              <div className="border-t border-slate-100 pt-4 mt-auto flex items-center gap-3">
+                <img 
+                  src={testimonial.avatarUrl} 
+                  alt={testimonial.name} 
+                  className="w-10 h-10 rounded-full object-cover border border-slate-200 shrink-0"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="min-w-0">
+                  <h4 className="text-sm font-bold text-slate-900 leading-tight truncate">{testimonial.name}</h4>
+                  <span className="text-[11px] text-slate-500 block truncate">{testimonial.role}</span>
                 </div>
-
-                {/* Testimonial highlight tag */}
-                <span className="text-[11px] font-mono font-bold text-emerald-700 bg-emerald-55 py-1 px-3 rounded-full border border-emerald-100 max-w-fit truncate">
-                  {t.tag}
-                </span>
               </div>
+
             </div>
           ))}
+        </div>
+
+        {/* Global summary count */}
+        <div className="mt-12 text-center text-xs text-slate-500 flex items-center justify-center gap-2 font-semibold">
+          <Star className="w-4 h-4 text-[#059669] fill-[#059669]" />
+          <span>Más de <strong>1,450+ finanzas personales saneadas</strong> en América Latina y España en lo que va del año.</span>
+        </div>
+
+        {/* Dynamic CTA button */}
+        <div className="mt-12 text-center">
+          <motion.button
+            onClick={scrollToCheckout}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-2 bg-[#10b981] hover:bg-emerald-400 text-slate-950 font-black text-xs md:text-sm py-4 px-8 rounded-xl uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-emerald-500/10"
+          >
+            <span>Quiero acceder al Sistema Completo</span>
+            <ArrowRight className="w-4 h-4" />
+          </motion.button>
+          <span className="block text-[11px] text-slate-400 mt-2 font-medium">
+            Únete hoy por solo $9 USD pago único • Acceso inmediato de por vida
+          </span>
         </div>
 
       </div>

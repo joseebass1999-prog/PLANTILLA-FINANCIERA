@@ -1,6 +1,8 @@
 {
   "name": "Dinero en Orden",
-  "description": "Landing page de ventas de alta conversión para el sistema de control financiero Dinero en Orden.",
+  "description": "Sistema Completo de Finanzas Personales para organizar tu dinero, salir de deudas y multiplicar tus ahorros de forma automatizada y práctica.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }

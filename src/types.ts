@@ -1,32 +1,23 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-export interface Transaction {
-  id: string;
-  concept: string;
-  category: string;
-  amount: number;
-  type: 'income' | 'expense';
-}
-
 export interface Testimonial {
   id: string;
   name: string;
   role: string;
-  quote: string;
+  avatarUrl: string;
   rating: number;
-  avatar: string;
-  tag: string;
+  content: string;
+  badge?: string;
+  impact?: string;
 }
 
-export interface Bonus {
+export interface VideoTestimonial {
   id: string;
   title: string;
+  duration: string;
+  thumbnailUrl: string;
+  videoUrl: string; // Embed or trigger URL
+  category: string;
+  author: string;
   description: string;
-  value: string;
-  iconName: string;
 }
 
 export interface Benefit {
@@ -34,12 +25,13 @@ export interface Benefit {
   title: string;
   description: string;
   iconName: string;
-  color: string;
+  metric?: string;
 }
 
-export interface ProblemCard {
-  id: string;
-  title: string;
-  description: string;
-  iconName: string;
+export interface SimulatorRow {
+  month: string;
+  balanceWithout: number;
+  balanceWith: number;
+  savingsWithout: number;
+  savingsWith: number;
 }

@@ -1,107 +1,165 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import { FileSpreadsheet, Smartphone, Sparkles, Check, X } from 'lucide-react';
+import { Check, X, ArrowRight } from 'lucide-react';
+import { motion } from 'motion/react';
 
 export default function Simplicity() {
-  const simplicityPoints = [
-    {
-      title: 'Excel básico',
-      desc: 'No necesitas fórmulas complejas ni macros indescifrables. Todo está pre-calculado, simplemente rellena las celdas marcadas para ver la magia.',
-      icon: FileSpreadsheet,
-    },
-    {
-      title: 'Sin apps complejas',
-      desc: 'No tienes que enlazar tus cuentas bancarias confidenciales ni lidiar con molestas apps de suscripción mensual que se quedan sin soporte.',
-      icon: Smartphone,
-    },
-    {
-      title: 'Sin experiencia previa',
-      desc: 'Olvídate de tecnicismos contables molestos. Viene acompañado de una guía rápida de 5 minutos para empezar sin ninguna fricción.',
-      icon: Sparkles,
-    },
-  ];
-
-  const comparisonRows = [
-    { feature: 'Sin cuotas de suscripción recurrente', standardApp: false, template: true },
-    { feature: 'Privacidad absoluta (sin conectar tu banco)', standardApp: false, template: true },
-    { feature: 'Se usa offline y en cualquier dispositivo', standardApp: true, template: true },
-    { feature: 'Curva de aprendizaje de solo 5 minutos', standardApp: false, template: true },
-    { feature: 'Apto para Excel, Google Sheets, etc.', standardApp: false, template: true },
-  ];
-
+  const scrollToCheckout = () => {
+    const el = document.getElementById('offer-checkout-section');
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
   return (
-    <section className="py-24 px-4 md:px-8 bg-white border-b border-slate-100">
+    <section id="simplicity-section" className="py-16 md:py-24 bg-slate-50 border-b border-emerald-500/10 px-6">
       <div className="max-w-5xl mx-auto">
         
-        {/* Header Block */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
-          <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-emerald-500/10 to-teal-500/10 text-emerald-800 font-sans text-xs font-black uppercase tracking-wider rounded-full border border-emerald-500/15 mb-6 shadow-sm shadow-emerald-500/5">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse shrink-0" />
-            <span>Fácil y directo</span>
+        {/* Section Heading */}
+        <div className="text-center mb-16 space-y-3">
+          <span className="text-xs text-[#059669] font-black uppercase tracking-widest bg-emerald-100 border border-emerald-200 px-4 py-1.5 rounded-full">
+            ✦ FÁCIL Y DIRECTO
           </span>
-          <h2 className="font-display font-bold text-3xl md:text-4xl text-slate-900 mt-4 tracking-tight">
+          <h2 className="text-3xl md:text-5xl font-black text-slate-900 tracking-tight uppercase">
             No necesitas saber nada de finanzas
           </h2>
-          <p className="font-sans text-slate-500 mt-3 text-base md:text-lg">
-            A diferencia de otros sistemas sofisticados, Dinero en Orden abraza la honestidad de lo simple.
+          <p className="text-slate-600 mt-2 text-sm md:text-base max-w-2xl mx-auto font-medium leading-relaxed">
+            A diferencia de otros sistemas complejos, Dinero en Orden abraza la honestidad de lo simple.
           </p>
         </div>
 
-        {/* Simplicity Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-          {simplicityPoints.map((point, idx) => {
-            const IconComp = point.icon;
-            return (
-              <div 
-                key={idx} 
-                className="bg-slate-50 p-6 md:p-8 rounded-2xl border border-slate-100 flex flex-col items-start text-left hover:-translate-y-1 transition-transform"
-              >
-                <div className="p-3 bg-emerald-100 text-emerald-700 rounded-xl mb-5">
-                  <IconComp className="w-5 h-5" />
-                </div>
-                <h3 className="font-sans font-bold text-lg text-slate-800 mb-2">
-                  {point.title}
-                </h3>
-                <p className="font-sans text-slate-500 text-xs md:text-sm leading-relaxed">
-                  {point.desc}
-                </p>
+        {/* Steps Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left mb-20">
+          
+          {/* Step 1 */}
+          <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200/80 flex flex-col justify-between relative overflow-hidden group hover:border-emerald-500/20 transition-all shadow-sm">
+            <div className="space-y-4">
+              <div className="bg-emerald-50 text-[#059669] w-12 h-12 rounded-2xl flex items-center justify-center font-black border border-emerald-100 shrink-0">
+                📄
               </div>
-            );
-          })}
+              <h3 className="text-base md:text-lg font-black text-slate-950">Excel básico</h3>
+              <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-medium">
+                No necesitas fórmulas complejas ni macros indescifrables. Todo está configurado de antemano; solo escribe los números básicos en las celdas marcadas para ver la magia.
+              </p>
+            </div>
+          </div>
+
+          {/* Step 2 */}
+          <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200/80 flex flex-col justify-between relative overflow-hidden group hover:border-emerald-500/20 transition-all shadow-sm">
+            <div className="space-y-4">
+              <div className="bg-emerald-50 text-[#059669] w-12 h-12 rounded-2xl flex items-center justify-center font-black border border-emerald-100 shrink-0">
+                🔒
+              </div>
+              <h3 className="text-base md:text-lg font-black text-slate-950">Sin aplicaciones complejas</h3>
+              <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-medium">
+                No tienes que enlazar tus cuentas bancarias confidenciales. Todo se mantiene privado bajo tu control personal en un archivo seguro que no se comparte con nadie.
+              </p>
+            </div>
+          </div>
+
+          {/* Step 3 */}
+          <div className="bg-white p-6 md:p-8 rounded-3xl border border-slate-200/80 flex flex-col justify-between relative overflow-hidden group hover:border-emerald-500/20 transition-all shadow-sm">
+            <div className="space-y-4">
+              <div className="bg-emerald-50 text-[#059669] w-12 h-12 rounded-2xl flex items-center justify-center font-black border border-emerald-100 shrink-0">
+                ⚡
+              </div>
+              <h3 className="text-base md:text-lg font-black text-slate-950">Sin experiencia previa</h3>
+              <p className="text-slate-600 text-xs md:text-sm leading-relaxed font-medium">
+                Olvídate de términos contables difíciles. El sistema está acompañado por un videotutorial de inicio rápido paso a paso de solo 5 minutos para que empieces sin ninguna fricción.
+              </p>
+            </div>
+          </div>
+
         </div>
 
-        {/* Comparison Table / Box for High Conversion */}
-        <div className="bg-slate-50 border border-slate-200/50 rounded-2xl overflow-hidden p-6 md:p-8 max-w-3xl mx-auto">
-          <h3 className="font-sans font-bold text-lg text-slate-800 text-center mb-6">
+        {/* Comparison Table Section */}
+        <div className="bg-white rounded-3xl border border-slate-200/80 p-6 md:p-8 shadow-xl max-w-4xl mx-auto">
+          <h3 className="text-xl md:text-2xl font-black text-center text-slate-900 uppercase tracking-tight mb-8">
             La diferencia es evidente
           </h3>
 
-          <div className="space-y-4">
-            <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-wider font-bold text-slate-400 border-b border-slate-250 pb-2">
-              <span>Características</span>
-              <div className="flex gap-6 sm:gap-12 text-right">
-                <span className="w-20 text-center">Otras Apps</span>
-                <span className="w-24 text-center text-emerald-600">Nuestro Sistema</span>
-              </div>
-            </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse text-xs md:text-sm">
+              <thead>
+                <tr className="border-b border-slate-100 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                  <th className="py-4 px-3">Características</th>
+                  <th className="py-4 px-3 text-center">Otras Aplicaciones</th>
+                  <th className="py-4 px-3 text-center text-emerald-600">Nuestro Sistema</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-50 font-medium text-slate-700">
+                
+                {/* Row 1 */}
+                <tr className="hover:bg-slate-50/50 transition-colors">
+                  <td className="py-4 px-3 font-semibold text-slate-900">Sin cuotas de suscripción recurrente</td>
+                  <td className="py-4 px-3 text-center">
+                    <X className="w-4 h-4 text-rose-500 mx-auto" />
+                  </td>
+                  <td className="py-4 px-3 text-center">
+                    <Check className="w-4 h-4 text-emerald-500 mx-auto stroke-[3]" />
+                  </td>
+                </tr>
 
-            {comparisonRows.map((row, idx) => (
-              <div key={idx} className="flex justify-between items-center text-xs md:text-sm py-1 border-b border-slate-100 last:border-0">
-                <span className="font-medium text-slate-600 text-left pr-4">{row.feature}</span>
-                <div className="flex gap-6 sm:gap-12 shrink-0">
-                  <div className="w-20 flex justify-center text-rose-500">
-                    {row.standardApp ? <Check className="w-4.5 h-4.5" /> : <X className="w-4.5 h-4.5" />}
-                  </div>
-                  <div className="w-24 flex justify-center text-emerald-600 font-bold">
-                    {row.template ? <Check className="w-5 h-5 bg-emerald-100 rounded p-0.5" /> : <X className="w-5 h-5" />}
-                  </div>
-                </div>
-              </div>
-            ))}
+                {/* Row 2 */}
+                <tr className="hover:bg-slate-50/50 transition-colors">
+                  <td className="py-4 px-3 font-semibold text-slate-900">Privacidad absoluta (sin conectar tu banco)</td>
+                  <td className="py-4 px-3 text-center">
+                    <X className="w-4 h-4 text-rose-500 mx-auto" />
+                  </td>
+                  <td className="py-4 px-3 text-center">
+                    <Check className="w-4 h-4 text-emerald-500 mx-auto stroke-[3]" />
+                  </td>
+                </tr>
+
+                {/* Row 3 */}
+                <tr className="hover:bg-slate-50/50 transition-colors">
+                  <td className="py-4 px-3 font-semibold text-slate-900">Se usa sin conexión y en cualquier dispositivo</td>
+                  <td className="py-4 px-3 text-center">
+                    <X className="w-4 h-4 text-rose-500 mx-auto" />
+                  </td>
+                  <td className="py-4 px-3 text-center">
+                    <Check className="w-4 h-4 text-emerald-500 mx-auto stroke-[3]" />
+                  </td>
+                </tr>
+
+                {/* Row 4 */}
+                <tr className="hover:bg-slate-50/50 transition-colors">
+                  <td className="py-4 px-3 font-semibold text-slate-900">Curva de aprendizaje de solo 5 minutos</td>
+                  <td className="py-4 px-3 text-center">
+                    <X className="w-4 h-4 text-rose-500 mx-auto" />
+                  </td>
+                  <td className="py-4 px-3 text-center">
+                    <Check className="w-4 h-4 text-emerald-500 mx-auto stroke-[3]" />
+                  </td>
+                </tr>
+
+                {/* Row 5 */}
+                <tr className="hover:bg-slate-50/50 transition-colors">
+                  <td className="py-4 px-3 font-semibold text-slate-900">Apto para Excel, Google Sheets, etc.</td>
+                  <td className="py-4 px-3 text-center">
+                    <X className="w-4 h-4 text-rose-500 mx-auto" />
+                  </td>
+                  <td className="py-4 px-3 text-center">
+                    <Check className="w-4 h-4 text-emerald-500 mx-auto stroke-[3]" />
+                  </td>
+                </tr>
+
+              </tbody>
+            </table>
           </div>
+        </div>
+
+        {/* Dynamic CTA button */}
+        <div className="mt-12 text-center">
+          <motion.button
+            onClick={scrollToCheckout}
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.98 }}
+            className="inline-flex items-center gap-2 bg-[#10b981] hover:bg-emerald-400 text-slate-950 font-black text-xs md:text-sm py-4 px-8 rounded-xl uppercase tracking-wider transition-all cursor-pointer shadow-lg shadow-emerald-500/10"
+          >
+            <span>Quiero el Sistema Completo</span>
+            <ArrowRight className="w-4 h-4" />
+          </motion.button>
+          <span className="block text-[11px] text-slate-400 mt-2 font-medium">
+            Empieza a ordenar tu dinero hoy mismo • $9 USD Pago Único
+          </span>
         </div>
 
       </div>

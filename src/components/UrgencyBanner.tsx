@@ -1,94 +1,140 @@
-import React, { useState, useEffect } from 'react';
-import { Flame, Clock, Sparkles, LogIn, TrendingDown, Users } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { useState, useEffect } from 'react';
 
-interface UrgencyBannerProps {
-  timeLeft: number;
-  spotsLeft: number;
-}
-
-export default function UrgencyBanner({ timeLeft, spotsLeft }: UrgencyBannerProps) {
+export default function UrgencyBanner() {
+  const [timeLeft, setTimeLeft] = useState(899); // 14 mins 59 secs (resets or counts down)
+  const [currentDay, setCurrentDay] = useState('');
   const [activeAlert, setActiveAlert] = useState<string | null>(null);
-  const [lastSpots, setLastSpots] = useState(spotsLeft);
+  const [remainingLicenses, setRemainingLicenses] = useState(7);
 
-  // Trigger popup notifications dynamically on real spot reductions
+  // Set the dynamic day in Spanish
   useEffect(() => {
-    if (spotsLeft < lastSpots) {
-      showNotification(spotsLeft);
-    }
-    setLastSpots(spotsLeft);
-  }, [spotsLeft, lastSpots]);
+    const days = [
+      'domingo',
+      'lunes',
+      'martes',
+      'miércoles',
+      'jueves',
+      'viernes',
+      'sábado',
+    ];
+    const today = new Date();
+    const dayName = days[today.getDay()];
+    // Capitalize first letter
+    setCurrentDay(dayName.charAt(0).toUpperCase() + dayName.slice(1));
+  }, []);
 
-  const showNotification = (remainingSpots: number) => {
-    const randomCities = ['Bogotá', 'Medellín', 'Santiago', 'Ciudad de México', 'Lima', 'Buenos Aires', 'Quito', 'San José'];
-    const selectedCity = randomCities[Math.floor(Math.random() * randomCities.length)];
-    setActiveAlert(`🔥 Alguien en ${selectedCity} acaba de adquirir "Dinero en Orden". ¡Quedan sólo ${remainingSpots} cupos!`);
-    
-    setTimeout(() => {
-      setActiveAlert(null);
-    }, 5000);
-  };
+  // Countdown timer logic
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft((prev) => (prev > 0 ? prev - 1 : 899));
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
+  // Format time as MM:SS
   const formatTime = (seconds: number) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  // Get current day name in Spanish
-  const days = ['domingo', 'lunes', 'martes', 'miércoles', 'jueves', 'viernes', 'sábado'];
-  const currentDay = days[new Date().getDay()];
+  // Live purchaser notification alerts
+  useEffect(() => {
+    const randomCities = [
+      'Bogotá',
+      'Medellín',
+      'Santiago',
+      'Ciudad de México',
+      'Lima',
+      'Buenos Aires',
+      'Quito',
+      'San José'
+    ];
+
+    const showAlert = () => {
+      const selectedCity = randomCities[Math.floor(Math.random() * randomCities.length)];
+      
+      // Update licenses (between 5 and 7) and set the dynamic message using the updated state
+      setRemainingLicenses((prev) => {
+        // Keeps licenses fluctuating between 5 and 7
+        const next = prev <= 5 ? 7 : prev - 1;
+        setActiveAlert(
+          `🔥 Alguien en ${selectedCity} acaba de adquirir "Dinero en Orden". ¡Quedan sólo ${next} cupos!`
+        );
+        return next;
+      });
+
+      // Hide alert after 4.5 seconds
+      setTimeout(() => {
+        setActiveAlert(null);
+      }, 4500);
+    };
+
+    // Initial alert after 4 seconds
+    const initialTimer = setTimeout(showAlert, 4000);
+
+    // Loop alerts every 12 seconds
+    const alertInterval = setInterval(showAlert, 12000);
+
+    return () => {
+      clearTimeout(initialTimer);
+      clearInterval(alertInterval);
+    };
+  }, []);
 
   return (
-    <div className="w-full bg-slate-900 border-b border-rose-900/40 text-white relative overflow-hidden z-[51]">
-      {/* Background visual subtle gradient glow */}
-      <div className="absolute inset-0 bg-gradient-to-r from-emerald-950/20 via-rose-955/25 to-slate-950/35 pointer-events-none" />
-      
-      <div className="max-w-6xl mx-auto px-4 py-2 flex flex-col md:flex-row items-center justify-between gap-2 relative z-10 font-sans">
-        
-        {/* Scarcity Core Message */}
-        <div className="flex items-center gap-2 text-center md:text-left">
-          <span className="flex h-2 w-2 relative">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
-          </span>
-          <p className="text-[11.5px] md:text-xs font-semibold text-rose-100 flex items-center gap-1.5 flex-wrap justify-center md:justify-start">
-            <span className="bg-rose-500/20 text-rose-300 font-extrabold uppercase px-1.5 py-0.5 rounded text-[10px] tracking-wider border border-rose-500/20 animate-pulse">
-              FOMO / Cupos Limitados
+    <>
+      {/* Top Urgency Header */}
+      <div 
+        id="top-urgency-banner" 
+        className="bg-[#0f172a] border-b border-[#881337]/40 text-white text-xs md:text-sm py-2.5 px-4 font-medium sticky top-0 z-50 shadow-md backdrop-blur-md bg-opacity-95"
+      >
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+          
+          {/* Left: Blinking FOMO Indicator */}
+          <div className="flex items-center gap-2">
+            <span className="bg-rose-500/10 text-rose-400 border border-rose-500/20 font-black text-[10px] px-2 py-0.5 rounded uppercase tracking-wider animate-pulse shrink-0">
+              FOMO / CUPOS LIMITADOS
             </span>
-            <span>¡Atención! Quedan solo <strong className="text-amber-400 font-black text-xs md:text-sm">{spotsLeft} licencias disponibles</strong> para este {currentDay}. Oferta de un único pago ($9) se cerrará pronto.</span>
-          </p>
-        </div>
-
-        {/* Dynamic Countdown Section */}
-        <div className="flex items-center gap-3">
-          <div className="inline-flex items-center gap-1.5 bg-rose-950/60 border border-rose-800/40 px-2.5 py-1 rounded-full text-rose-250">
-            <Clock className="w-3.5 h-3.5 text-rose-400 animate-spin-slow" />
-            <span className="text-[11px] font-bold uppercase tracking-wider">El descuento expira en:</span>
-            <span className="text-xs font-black font-mono text-amber-300 bg-slate-950/100 px-1.5 py-0.5 rounded border border-rose-500/15 min-w-[42px] text-center">
-              {formatTime(timeLeft)}
+            <span className="text-slate-700 hidden md:inline">|</span>
+            <span className="text-slate-300 font-semibold tracking-wide text-center sm:text-left">
+              ¡Atención! Quedan solo <span className="font-extrabold text-[#fcd34d]">{remainingLicenses} licencias disponibles</span> para este <span className="text-white underline font-bold">{currentDay}</span>! Oferta de un único pago ($9) se cerrará pronto.
             </span>
           </div>
-        </div>
 
+          {/* Right: Timer & Offer Details */}
+          <div className="flex items-center gap-3 shrink-0">
+            <div className="flex items-center gap-1.5 font-mono text-[#fcd34d] font-bold bg-black/40 px-2.5 py-1 rounded border border-yellow-500/10">
+              <svg className="w-4 h-4 text-[#fcd34d]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+              <span className="text-[10px] text-slate-400 font-sans tracking-wide mr-1">EL DESCUENTO EXPIRA EN:</span>
+              <span className="text-sm font-black tracking-wider">{formatTime(timeLeft)}</span>
+            </div>
+          </div>
+
+        </div>
       </div>
 
-      {/* Floating purchase notifier overlay to absolute triggers */}
-      <AnimatePresence>
-        {activeAlert && (
-          <motion.div
-            initial={{ opacity: 0, y: -25 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -25 }}
-            className="absolute inset-0 bg-gradient-to-r from-emerald-900 to-teal-900 text-white flex items-center justify-center font-bold text-xs p-2 text-center shadow-lg pointer-events-none z-20 border-b border-emerald-500/20"
-          >
-            <div className="flex items-center gap-2">
-              <Flame className="w-4 h-4 text-amber-300 animate-bounce" />
-              <span>{activeAlert}</span>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
+      {/* Floating purchase notification (bottom left) */}
+      <div
+        id="purchase-toast-container"
+        className={`fixed bottom-5 left-5 z-50 transition-all duration-500 transform ${
+          activeAlert ? 'translate-y-0 opacity-100 scale-100' : 'translate-y-10 opacity-0 scale-90 pointer-events-none'
+        }`}
+      >
+        <div className="bg-gradient-to-r from-emerald-900 to-teal-900 border border-emerald-500/30 text-white rounded-xl p-4 shadow-2xl max-w-sm flex items-start gap-3 backdrop-blur-md bg-opacity-95">
+          <div className="bg-emerald-500/20 text-emerald-300 p-2.5 rounded-lg shrink-0 border border-emerald-500/20">
+            <svg className="w-5 h-5 animate-bounce text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </div>
+          <div className="text-left">
+            <p className="text-sm font-bold text-white">¡Nueva Licencia Adquirida!</p>
+            <p className="text-xs text-emerald-100 mt-1">{activeAlert}</p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 }

@@ -1,93 +1,57 @@
-/**
- * @license
- * SPDX-License-Identifier: Apache-2.0
- */
-
-import React from 'react';
-import { motion } from 'motion/react';
-import { Sparkles, Zap, Video, TrendingUp, HeartHandshake, Eye, Coins, ShieldCheck } from 'lucide-react';
+import { ShieldCheck, CloudLightning, RefreshCw, KeyRound } from 'lucide-react';
 
 export default function TrustBar() {
-  const items = [
-    { 
-      label: 'Diseño moderno', 
-      desc: 'Interfaz minimalista, clara y premium',
-      icon: Sparkles, 
-      color: 'text-emerald-600', 
-      bg: 'bg-white border-emerald-100' 
-    },
-    { 
-      label: 'Fácil de usar', 
-      desc: 'Sin fórmulas complejas ni registros',
-      icon: Zap, 
-      color: 'text-amber-600', 
-      bg: 'bg-white border-emerald-100' 
-    },
-    { 
-      label: 'Vídeo tutoriales y Soporte', 
-      desc: 'Acompañamiento paso a paso garantizado',
-      icon: Video, 
-      color: 'text-teal-600', 
-      bg: 'bg-white border-emerald-100' 
-    },
-    { 
-      label: 'Ingresos, Ahorros y más', 
-      desc: 'Módulos dinámicos e intuitivos interconectados',
-      icon: TrendingUp, 
-      color: 'text-emerald-650', 
-      bg: 'bg-white border-emerald-100' 
-    }
-  ];
-
-  // We duplicate items to create a seamless infinite loops effect
-  const marqueeItems = [...items, ...items, ...items];
-
   return (
-    <div className="bg-[#edf7f2] border-y border-emerald-100/50 py-8 overflow-hidden relative z-20 shadow-sm font-sans">
-      
-      {/* Decorative side blurs for modern studio look */}
-      <div className="absolute left-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-r from-[#edf7f2] to-transparent pointer-events-none z-10" />
-      <div className="absolute right-0 top-0 bottom-0 w-16 md:w-32 bg-gradient-to-l from-[#edf7f2] to-transparent pointer-events-none z-10" />
+    <section id="trust-bar" className="bg-slate-50 border-y border-emerald-500/10 py-8 px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 items-center">
+          
+          {/* Trust 1 */}
+          <div className="flex items-center gap-3 justify-center md:justify-start">
+            <div className="bg-emerald-100 p-2.5 rounded-lg text-emerald-700">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <div className="text-left">
+              <span className="text-xs text-slate-500 block font-semibold uppercase tracking-wider">Pago Seguro</span>
+              <span className="text-xs md:text-sm font-bold text-slate-900">Encriptación SSL</span>
+            </div>
+          </div>
 
-      {/* Ticker Container with auto-scroll animation */}
-      <div className="flex select-none">
-        <motion.div
-          animate={{ x: [0, '-33.333%'] }}
-          transition={{
-            x: {
-              repeat: Infinity,
-              repeatType: "loop",
-              duration: 20,
-              ease: "linear",
-            },
-          }}
-          className="flex gap-6 whitespace-nowrap px-4"
-        >
-          {marqueeItems.map((item, idx) => {
-            const IconComp = item.icon;
-            return (
-              <div 
-                key={idx} 
-                className={`inline-flex items-center gap-4 border p-3 md:p-4.5 rounded-2xl ${item.bg} shadow-md shadow-slate-100/30 shrink-0 transition-transform hover:scale-[1.02] duration-300 pointer-events-auto`}
-              >
-                {/* Custom dynamic glowing icon box */}
-                <div className={`w-10 h-10 rounded-xl bg-emerald-50/50 ${item.color} flex items-center justify-center shadow-sm shrink-0 border border-emerald-100/40`}>
-                  <IconComp className="w-5 h-5" />
-                </div>
-                
-                <div className="text-left font-sans">
-                  <p className="font-sans font-extrabold text-[13px] md:text-sm text-slate-900 tracking-tight leading-none animate-pulse">
-                    {item.label}
-                  </p>
-                  <p className="font-sans font-medium text-[10px] md:text-[11px] text-slate-500 mt-1.5 leading-none">
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
-        </motion.div>
+          {/* Trust 2 */}
+          <div className="flex items-center gap-3 justify-center">
+            <div className="bg-emerald-100 p-2.5 rounded-lg text-emerald-700">
+              <CloudLightning className="w-5 h-5" />
+            </div>
+            <div className="text-left">
+              <span className="text-xs text-slate-500 block font-semibold uppercase tracking-wider">Acceso Instantáneo</span>
+              <span className="text-xs md:text-sm font-bold text-slate-900">Descarga Digital</span>
+            </div>
+          </div>
+
+          {/* Trust 3 */}
+          <div className="flex items-center gap-3 justify-center">
+            <div className="bg-emerald-100 p-2.5 rounded-lg text-emerald-700">
+              <KeyRound className="w-5 h-5" />
+            </div>
+            <div className="text-left">
+              <span className="text-xs text-slate-500 block font-semibold uppercase tracking-wider">Un Solo Pago</span>
+              <span className="text-xs md:text-sm font-bold text-slate-900">Cero Suscripciones</span>
+            </div>
+          </div>
+
+          {/* Trust 4 */}
+          <div className="flex items-center gap-3 justify-center md:justify-end">
+            <div className="bg-emerald-100 p-2.5 rounded-lg text-emerald-700">
+              <RefreshCw className="w-5 h-5" />
+            </div>
+            <div className="text-left">
+              <span className="text-xs text-slate-500 block font-semibold uppercase tracking-wider">Garantía Total</span>
+              <span className="text-xs md:text-sm font-bold text-slate-900">7 Días de Reembolso</span>
+            </div>
+          </div>
+
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
