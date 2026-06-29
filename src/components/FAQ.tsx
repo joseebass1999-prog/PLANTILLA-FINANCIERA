@@ -114,13 +114,13 @@ export default function FAQ() {
         {/* Micro FAQ CTA block */}
         <div className="text-center space-y-4">
           <p className="text-xs text-slate-500 font-medium">
-            ¿Tienes otra pregunta? No te preocupes. Escríbenos a <span className="text-slate-800 font-bold">info@dineroenorden.com</span> y te responderemos de inmediato.
+            ¿Tienes otra pregunta? No te preocupes. Escríbenos a <span className="text-slate-850 font-bold underline">masterkitfinanciero@gmail.com</span> y te responderemos de inmediato.
           </p>
           <motion.button
             onClick={scrollToCheckout}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.98 }}
-            className="bg-slate-900 hover:bg-slate-800 text-white font-black text-xs px-8 py-4 rounded-xl uppercase tracking-wider cursor-pointer shadow-lg flex items-center justify-center gap-1.5 mx-auto"
+            className="bg-[#10b981] hover:bg-emerald-400 text-slate-950 font-black text-xs px-8 py-4.5 rounded-xl uppercase tracking-wider cursor-pointer shadow-lg flex items-center justify-center gap-1.5 mx-auto"
           >
             <span>Quiero ordenar mi dinero hoy por solo $9</span>
           </motion.button>

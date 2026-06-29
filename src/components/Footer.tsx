@@ -44,7 +44,7 @@ export default function Footer() {
         {/* Lower footer with disclaimers */}
         <div className="text-center md:text-left space-y-4">
           <p className="text-[11px] text-slate-500 leading-relaxed">
-            SOPORTE AL CLIENTE: Para dudas de descarga o soporte con tus archivos de Google Sheets, escríbenos a <span className="text-slate-800 font-semibold">info@dineroenorden.com</span>. Respondemos en menos de 24 horas laborables. | <span className="text-emerald-700 font-bold">Garantía Incondicional: Reembolso inmediato de 7 días.</span>
+            SOPORTE AL CLIENTE: Para dudas de descarga o soporte con tus archivos de Google Sheets, escríbenos a <span className="text-slate-800 font-semibold">masterkitfinanciero@gmail.com</span>. Respondemos en menos de 24 horas laborables. | <span className="text-emerald-700 font-bold">Garantía Incondicional: Reembolso inmediato de 7 días.</span>
           </p>
           <p className="text-[10px] text-slate-400 leading-relaxed">
             DESCARGO DE RESPONSABILIDAD: Los resultados expuestos en los testimonios y simulaciones son de carácter ilustrativo e inspiracional. No constituyen asesoría financiera formal ni garantizan enriquecimiento automático. El éxito financiero personal depende enteramente de la disciplina individual, la consistencia en el registro y la ejecución de los planes adoptados por el usuario. "Dinero en Orden" es una herramienta educativa de control presupuestario digital.
