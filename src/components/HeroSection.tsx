@@ -186,7 +186,7 @@ export default function HeroSection() {
                   <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
                   <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
                 </div>
-                <span className="text-[10px] text-slate-350 font-bold mt-0.5 leading-none">
+                <span className="text-[10px] text-white font-bold mt-0.5 leading-none">
                   5.0 Calificado por +150 compradores
                 </span>
               </div>
